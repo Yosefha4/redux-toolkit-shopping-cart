@@ -1,11 +1,12 @@
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 // import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function NavbarElement() {
+  const cartProducrts = useSelector(state => state.cart)
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -17,9 +18,9 @@ function NavbarElement() {
             style={{ maxHeight: "100px"}}
             navbarScroll
           >
-            <Nav.Link href="/cardList">Products</Nav.Link>
+            <Nav.Link to="/cardList" as={Link}>Products</Nav.Link>
           </Nav>
-          <Nav.Link  href="/cart">0 my card</Nav.Link>
+          <Nav.Link to="/cart" as={Link}>My Bag {cartProducrts.length}</Nav.Link>
 
         </Navbar.Collapse>
       </Container>
